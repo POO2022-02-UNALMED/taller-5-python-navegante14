@@ -1,45 +1,24 @@
+import this
 from zooAnimales.animal import Animal
-
-
 class Mamifero(Animal):
-    listado = []
-    caballos = 0
-    leones = 0
-
-    def __init__(self, n, e, hab, g, pel, pat):
-        super().__init__(n, e, hab, g)
-        self.pelaje = pel
-        self.patas = pat
-        Mamifero.listado.append(self)
-
-    @classmethod
-    def cantidadMamiferos(self):
-        return len(Mamifero.listado)
-
-    @classmethod
-    def crearCaballo(
-        self,
-        n,
-        e,
-        g,
-    ):
-        nuevo = Mamifero(n, e, "pradera", g, True, 4)
-        Mamifero.caballos += 1
-        return nuevo
-
-    @classmethod
-    def crearLeon(
-        self,
-        n,
-        e,
-        g,
-    ):
-        nuevo = Mamifero(n, e, "selva", g, True, 4)
-        Mamifero.leones += 1
-        return nuevo
-
+    listado=[]
+    caballos=0
+    leones=0
+    def __init__(self, nombre, edad, habitat, genero,pelaje,patas):
+        super().__init__(nombre, edad, habitat, genero)
+        Animal.mamifero+=1
+        self.pelaje=pelaje
+        self.patas=patas
+        self.listado.append(self)
+    def cantidadMamifero(self):
+        return len(self.listado)
+    def crearCaballo(nombre,edad,sexo):
+        Mamifero.caballos+=1
+        return Mamifero(nombre,edad,"pradera",sexo,True,4)
+    def crearLeon(nombre,edad,sexo):
+        Mamifero.leones+=1
+        return Mamifero(nombre,edad,"selva",sexo,True,4)
     def isPelaje(self):
         return self.pelaje
-
     def getPatas(self):
         return self.patas
